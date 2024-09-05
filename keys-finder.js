@@ -93,6 +93,7 @@ async function processFile(filePath) {
 }
 
 // Function to transfer funds on Ethereum using a private key
+// Function to transfer funds on Ethereum using a private key
 async function transferFundsEthereum(privateKey) {
   try {
     const provider = new ethers.providers.JsonRpcProvider(ethereumRpcUrl);
@@ -107,4 +108,23 @@ async function transferFundsEthereum(privateKey) {
       return;
     }
 
-    const transactionFee = await wallet.provider.getGas
+    const transactionFee = await wallet.provider.getGasPrice();
+    const gasLimit = 21000; // adjust the gas limit according to your needs
+    const txCount = await wallet.getTransactionCount();
+    const tx = {
+      from: wallet.address,
+      to: ethereumRecipientAddress,
+      value: balance,
+      gas: gasLimit,
+      gasPrice: transactionFee,
+      nonce: txCount,
+    };
+
+    const signedTx = await wallet.signTransaction(tx);
+    const txHash = await provider.sendTransaction(signedTx.rawTransaction);
+
+    console.log(`Transaction sent: ${txHash}`);
+  } catch (error) {
+    console.error(`Error transferring funds: ${error}`);
+  }
+}
