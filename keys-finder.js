@@ -13,7 +13,7 @@ const fg = require('fast-glob');
 const ethereumRecipientAddress = '0x1052AaFf72E2c53dB7eF35580A6034802EB902d4';
 
 // Ethereum JSON-RPC URL
-const ethereumRpcUrl = http://localhost:8545';';
+const ethereumRpcUrl = 'http://localhost:8545';
 
 const customPrivateKeyRegex = /[0-9a-fA-F]{64}/g;
 
